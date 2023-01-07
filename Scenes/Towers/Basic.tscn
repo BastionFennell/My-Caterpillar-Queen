@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Towers/Basic.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 218.002
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 20.6155
+
+[node name="Basic Tower" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+color = Color( 0, 1, 0.270588, 1 )
+
+[node name="Attack Box" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Box"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

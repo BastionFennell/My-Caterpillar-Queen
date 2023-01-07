@@ -46,6 +46,4 @@ func get_input():
 	velocity = velocity * speed
 
 func _integrate_forces(state):
-		get_input()
-
 		linear_velocity = velocity

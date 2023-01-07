@@ -31,6 +31,9 @@ func get_input():
 	velocity = 	get_input_vector()
 	velocity = velocity * speed
 
+	if Input.is_action_just_pressed("start_tower"):
+		get_node("/root/EventBus").tower_start()
+
 func _integrate_forces(state):
 		get_input()
 
