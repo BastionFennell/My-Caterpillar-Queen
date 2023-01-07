@@ -33,4 +33,4 @@ texture = ExtResource( 4 )
 offset = Vector2( 22, 1 )
 
 [node name="Hand" type="Position2D" parent="Joint 1/Joint 2"]
-position = Vector2( 46, 0 )
+position = Vector2( 47, 0 )

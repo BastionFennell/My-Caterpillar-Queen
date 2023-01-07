@@ -55,31 +55,31 @@ position = Vector2( 18, 1 )
 
 [node name="Leg 3" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( 16, 16 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 flipped = true
 
 [node name="Leg 4" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( 12, 30 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 flipped = true
 
 [node name="Leg 5" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -14, -12 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 flipped = true
 
 [node name="Leg 6" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -20, 1 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 flipped = true
 
 [node name="Leg 7" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -22, 16 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="Leg 8" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -13, 30 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 9 )

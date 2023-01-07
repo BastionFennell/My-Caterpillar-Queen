@@ -57,11 +57,11 @@ func _process(delta):
 
 	if abs(offset.y) < 40:
 		if goal_pos.y < global_position.y:
-			step(Vector2(get_parent().global_position.x, global_position.y - len_total * 0.8))
+			step(Vector2(get_parent().global_position.x, global_position.y - len_total * 0.9))
 		else:
-			step(Vector2(get_parent().global_position.x, global_position.y + len_total * 0.8))
+			step(Vector2(get_parent().global_position.x, global_position.y + len_total * 0.9))
 
-	if dis_to_tar > len_total * 0.8:
+	if dis_to_tar > len_total * 0.9:
 		if goal_pos.y < global_position.y:
 			step(Vector2(get_parent().global_position.x, global_position.y - 40))
 		else:
