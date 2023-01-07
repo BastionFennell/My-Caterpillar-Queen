@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Sprites/Character/Body.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Character/Leg.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Character/Menu Character.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Character/Leg.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sprites/Character/Head.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Character/Character.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Character/Leg.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -28,7 +27,7 @@ tracks/0/keys = {
 
 [node name="Spider" type="RigidBody2D"]
 gravity_scale = 0.0
-script = ExtResource( 7 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
@@ -59,7 +58,7 @@ flipped = true
 
 [node name="Leg 4" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( 12, 30 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 flipped = true
 
 [node name="Leg 5" parent="Body" instance=ExtResource( 8 )]
@@ -69,7 +68,7 @@ flipped = true
 
 [node name="Leg 6" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -20, 1 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 flipped = true
 
 [node name="Leg 7" parent="Body" instance=ExtResource( 8 )]
@@ -78,7 +77,7 @@ script = ExtResource( 3 )
 
 [node name="Leg 8" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -13, 30 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 9 )
