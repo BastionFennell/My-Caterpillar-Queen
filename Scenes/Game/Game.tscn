@@ -1,14 +1,59 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Game/WebSpawn.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Enemies/Basic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Character/Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Game/Enemy Spawner.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Game/Tower Preview.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Game/Tower Controller.gd" type="Script" id=7]
 
 [node name="World" type="Node2D"]
 
-[node name="SpawnWeb" type="Node2D" parent="."]
-script = ExtResource( 1 )
+[node name="BG" type="Node2D" parent="."]
+z_index = -4096
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+margin_left = -7.0
+margin_top = -2.0
+margin_right = 1282.0
+margin_bottom = 728.0
+color = Color( 0.501961, 0.501961, 0.639216, 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 100.0
 margin_right = 40.0
 margin_bottom = 14.0
 align = 2
+
+[node name="Basic Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 627, 391 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 691, 433 )
+z_index = 100
+
+[node name="SpawnWeb" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Tower Controller" type="Node2D" parent="."]
+z_index = 20
+script = ExtResource( 7 )
+
+[node name="Tower Preview" type="Node2D" parent="Tower Controller"]
+visible = false
+modulate = Color( 1, 1, 1, 0.392157 )
+script = ExtResource( 6 )
+
+[node name="Enemy Spawner" type="Node2D" parent="."]
+position = Vector2( 691, 433 )
+script = ExtResource( 5 )
+
+[node name="Spawn Points" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Spawn Points"]
+position = Vector2( -35, 251 )
+
+[node name="Web" type="Node2D" parent="."]
