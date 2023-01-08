@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-var speed = 200
-var velocity = 0
 var start_timer
 
 func _ready():
@@ -26,24 +24,3 @@ func _start_intro():
 	get_node("Intro Animator").play("Intro")
 
 	start_timer.queue_free()
-
-func get_input_vector():
-	var vec = Vector2()
-
-	#if Input.is_action_pressed("ui_right"):
-	#	vec.x += Input.get_action_strength("ui_right")
-	#if Input.is_action_pressed("ui_left"):
-	#	vec.x -= Input.get_action_strength("ui_left")
-	if Input.is_action_pressed("ui_up"):
-		vec.y -= Input.get_action_strength("ui_up")
-	if Input.is_action_pressed("ui_down"):
-		vec.y += Input.get_action_strength("ui_down")
-
-	return vec.normalized()
-
-func get_input():
-	velocity = 	get_input_vector()
-	velocity = velocity * speed
-
-func _integrate_forces(state):
-		linear_velocity = velocity

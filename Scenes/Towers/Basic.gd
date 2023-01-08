@@ -4,6 +4,7 @@ export (int) var damage = 2
 export (float) var reload_time = 1
 export (float) var reload_timer = 0
 
+var bullet = preload("res://Scenes/Projectiles/Basic Bullet.tscn")
 onready var attack_box = get_node("Attack Box")
 var is_reloading = false
 var active = false
@@ -35,8 +36,14 @@ func attack():
 	if !enemy:
 		return
 
-	print("attack!")
-	enemy.damage(damage)
+	look_at(enemy.global_position)
+	var new_bullet = bullet.instance()
+	new_bullet.target = enemy
+	new_bullet.damage = damage
+	new_bullet.global_position = global_position
+	
+	get_node("/root/World").add_child(new_bullet)
+
 	is_reloading = true
 
 func _process(delta):
