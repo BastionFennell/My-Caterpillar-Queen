@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 export (int) var damage = 2
 export (float) var reload_time = 1
