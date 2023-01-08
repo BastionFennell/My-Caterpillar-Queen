@@ -1,6 +1,8 @@
-extends Node2D
+extends RigidBody2D
 
 var joint = preload("res://Scenes/Web/Pin.tscn")
+
+var is_web = true
 
 var attached_nodes_a = []
 var attached_nodes_b = []
@@ -8,6 +10,7 @@ var a_is_top = true;
 var calc_mass_again = true;
 var is_suspended = false;
 var prev_rotation
+var base_mass = 0.05
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -96,8 +99,17 @@ func check_rotation():
 		
 		set_calc_mass_again()
 	prev_rotation = int(rotation_degrees)
-	
 
+func add_tower(tower):
+	add_child(tower)
+
+	var new_mass = base_mass
+	for c in get_children():
+		if "mass" in c:
+			new_mass += c.mass
+
+	mass = new_mass
+	set_calc_mass_again()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Game/WebSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemies/Basic.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scenes/Game/Enemy Spawner.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Game/Tower Preview.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Game/Tower Controller.gd" type="Script" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
 
 [node name="World" type="Node2D"]
 
@@ -46,6 +49,11 @@ script = ExtResource( 7 )
 visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 script = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="Tower Controller/Tower Preview"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower Controller/Tower Preview/Area2D"]
+shape = SubResource( 1 )
 
 [node name="Enemy Spawner" type="Node2D" parent="."]
 position = Vector2( 691, 433 )
