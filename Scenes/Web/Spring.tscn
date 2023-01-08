@@ -1,6 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Web/Spring.gd" type="Script" id=1]
 
 [node name="Spring" type="DampedSpringJoint2D"]
 length = 1.0
 stiffness = 64.0
 damping = 7.0
+script = ExtResource( 1 )
+
+[node name="Rect" type="Node2D" parent="."]
+
+[node name="Color" type="ColorRect" parent="Rect"]
+margin_top = -5.0
+margin_right = 99.0
+margin_bottom = 5.0
+color = Color( 1, 0, 0, 1 )

@@ -20,3 +20,7 @@ margin_bottom = 5.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
+
+[node name="A" type="Position2D" parent="."]
+
+[node name="B" type="Position2D" parent="."]
