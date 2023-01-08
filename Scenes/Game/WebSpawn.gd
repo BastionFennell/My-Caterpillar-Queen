@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var main_node = get_node("/root/World/Web")
+
 var web = preload("res://Scenes/Web/Web.tscn")
 var anchor = preload("res://Scenes/Web/Anchor.tscn")
 var pin = preload("res://Scenes/Web/Pin.tscn")
@@ -12,7 +14,6 @@ func _ready():
 	self.call_deferred("spawn_web", Vector2(10,10), Vector2(800,10))	
 	
 func spawn_web(position1, position2):
-	var main_node = get_node("/root/World/Web")
 	var origin = main_node.global_position
 	
 	var start_anchor = create_anchor(position1)
@@ -30,7 +31,6 @@ func spawn_web(position1, position2):
 	#main_node.add_child(create_web_geometry())
 	
 func create_webs(start_node, end_node):
-	var main_node = get_node("/root/World")
 	var origin = main_node.global_position
 	
 	var parent = start_node;
