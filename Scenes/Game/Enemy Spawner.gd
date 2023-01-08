@@ -2,7 +2,7 @@ extends Node2D
 
 onready var spawn_points = get_node("../Spawn Points")
 
-export (float) var time_to_spawn = 1
+export (float) var time_to_spawn = 1.5
 
 var enemies = {
 	"basic": preload("res://Scenes/Enemies/Basic.tscn")
