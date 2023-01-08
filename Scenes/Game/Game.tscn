@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Game/WebSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemies/Basic.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Game/Enemy Spawner.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Game/Tower Preview.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Game/Tower Controller.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Audio/Songs/Spider Game Jam Music.wav" type="AudioStream" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -65,3 +66,8 @@ script = ExtResource( 5 )
 position = Vector2( -35, 251 )
 
 [node name="Web" type="Node2D" parent="."]
+
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
