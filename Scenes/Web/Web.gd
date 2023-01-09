@@ -17,6 +17,9 @@ var region
 var linked
 var total_mass = self.mass
 
+onready var astar_id_a = "%s_astar_a" % name
+onready var astar_id_b = "%s_astar_b" % name
+
 func attach(node):
 	if(node.position.y > position.y):
 		get_bottom_nodes().push_back(node)
@@ -52,6 +55,10 @@ func init(linked_node):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var game = get_node("/root/World")
+	astar_id_a = game.add_point($A.global_position)
+	astar_id_b = game.add_point($B.global_position)
+	game.connect_points(astar_id_a, astar_id_b)
 	prev_rotation = int(rotation_degrees)
 	calc_mass();
 	"""var j = joint.instance()
@@ -112,8 +119,12 @@ func add_tower(tower):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var astar = get_node("/root/World").astar
 	if (linked == "debug"):
 		get_node("/root/World/Label").set_text(str(total_mass))
 	check_rotation()
 	calc_mass()
+
+	astar.set_point_position(astar_id_a, $A.global_position)
+	astar.set_point_position(astar_id_b, $B.global_position)
 #	pass

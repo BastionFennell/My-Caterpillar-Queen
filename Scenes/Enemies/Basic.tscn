@@ -28,5 +28,3 @@ bus = "SFX"
 position = Vector2( -7, 0.5 )
 rotation = 1.5708
 texture = ExtResource( 3 )
-
-[node name="Navigation2D" type="Navigation2D" parent="."]

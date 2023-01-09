@@ -102,7 +102,6 @@ func add_joint(parent, linked, off):
 	j.node_a = parent.get_path()
 	j.node_b = linked.get_path()
 	parent.add_child(j)
-	
 
 	
 	
