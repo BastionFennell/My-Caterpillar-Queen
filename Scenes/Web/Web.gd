@@ -12,9 +12,8 @@ var is_suspended = false;
 var prev_rotation
 var base_mass = 0.05
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var region
+
 var linked
 var total_mass = self.mass
 
@@ -40,7 +39,7 @@ func calc_mass():
 		total_mass += node.calc_mass()
 	calc_mass_again = false;
 	var color_num = 1 - (total_mass / 1)
-	modulate = Color(color_num, color_num, color_num)
+	#modulate = Color(color_num, color_num, color_num)
 	
 	return total_mass
 	

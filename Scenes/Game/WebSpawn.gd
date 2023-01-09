@@ -43,11 +43,10 @@ func create_webs(start_node, end_node):
 	var y_step = y_dist / web_segments
 	
 	var rotation_angle = start_node.position.angle_to_point(end_node.position)
-	rotation_angle += PI / 2
+	rotation_angle += PI
 	
-	x_pos -= 50 * sin(rotation_angle)
-	y_pos += 50 * cos(rotation_angle)
-	
+	x_pos += (start_node.position.direction_to(end_node.position) * 50).x
+	y_pos += (start_node.position.direction_to(end_node.position) * 50).y
 	
 	var web_node = web.instance()
 	#web_node.init("debug")
@@ -99,7 +98,7 @@ func create_web_geometry():
 func add_joint(parent, linked, off):
 	var j = joint.instance()
 	print(off)
-	j.set_position(Vector2(0,off))
+	j.set_position(Vector2(off, 0))
 	j.node_a = parent.get_path()
 	j.node_b = linked.get_path()
 	parent.add_child(j)

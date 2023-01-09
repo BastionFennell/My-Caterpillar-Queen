@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Sprites/Webs/White.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Web/Anchor.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 5 )
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( -6, -6, 6, -6, 6, 6, -6, 6 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -6, -6, 6, -6, 6, 6, -6, 6 ) ]
 
 [node name="Anchor" type="StaticBody2D"]
 script = ExtResource( 2 )
@@ -24,3 +29,6 @@ stretch_mode = 1
 [node name="A" type="Position2D" parent="."]
 
 [node name="B" type="Position2D" parent="."]
+
+[node name="Nav" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 2 )

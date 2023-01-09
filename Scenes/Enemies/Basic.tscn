@@ -9,6 +9,7 @@ radius = 8.0
 height = 24.0
 
 [node name="Basic Enemy" type="RigidBody2D"]
+z_index = 10
 collision_layer = 2
 collision_mask = 0
 gravity_scale = 0.0
@@ -27,3 +28,5 @@ bus = "SFX"
 position = Vector2( -7, 0.5 )
 rotation = 1.5708
 texture = ExtResource( 3 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
