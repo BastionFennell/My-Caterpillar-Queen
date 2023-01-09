@@ -1,7 +1,7 @@
 extends RigidBody2D
 
+var target
 var speed = 200
-var velocity = 0
 
 func _ready():
 	get_node("Body/Leg 1").step(Vector2(global_position.x, get_node("Body/Leg 1").global_position.y - 115))
@@ -27,15 +27,27 @@ func get_input_vector():
 
 	return vec.normalized()
 
-func get_input():
-	velocity = 	get_input_vector()
-	velocity = velocity * speed
-
-	if Input.is_action_just_pressed("start_tower"):
-		get_node("/root/EventBus").tower_start()
-
 func _integrate_forces(state):
-		get_input()
+	var astar = get_node("/root/World").astar
+	if target:
+		var current = astar.get_closest_point(global_position)
+		var closest_target_point = astar.get_closest_point(target)
 
-		linear_velocity = velocity
+		var astar_path = astar.get_point_path(current, closest_target_point)
+		if len(astar_path) > 1 && global_position.distance_to(astar_path[1]) > 10:
+			var next_step = astar_path[1]
+			var vec = global_position.direction_to(next_step)
+			look_at(next_step)
+			rotation += PI / 2
+	
+			linear_velocity = vec * speed
+		else:
+			target = null
+			linear_velocity = Vector2(0, 0)
 
+	global_position = astar.get_closest_position_in_segment(global_position)
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("click"):
+		target = get_global_mouse_position()

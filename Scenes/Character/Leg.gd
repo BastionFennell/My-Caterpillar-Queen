@@ -10,6 +10,7 @@ var len_upper = 0
 var len_middle = 0
 var len_lower = 0
  
+export var is_front_leg = false
 export var flipped = false
  
 var goal_pos = Vector2()
@@ -32,17 +33,28 @@ func _ready():
 func step(g_pos):
 	if goal_pos == g_pos:
 		return
- 
+
+	"""
+	var astar = get_node("/root/World").astar
+	if astar:
+		goal_pos = astar.get_closest_position_in_segment(g_pos)
+		print(goal_pos)
+		print(g_pos)
+	else:
+	"""
 	goal_pos = g_pos
 	var hand_pos = hand.global_position
  
 	var midY = (goal_pos.y + hand_pos.y) / 2.0
-	var midX = goal_pos.x
+	var midX = (goal_pos.x + hand_pos.x) / 2.0
 
-	if get_parent().global_position.x < global_position.x:
-		midX += step_height
+	var int_vec = Vector2(midX, midY)
+	var perp = global_position.angle_to(goal_pos)
+
+	if get_parent().position.x < get_parent().to_local(global_position).x:
+		int_vec += Vector2(step_height, 0).rotated(perp)
 	else:
-		midX -= step_height
+		int_vec -= Vector2(step_height, 0).rotated(perp)
 
 	start_pos = hand_pos
 	int_pos = Vector2(midX, midY)
@@ -52,20 +64,21 @@ func _process(delta):
 	var len_total = len_upper + len_middle + len_lower
 	var offset = goal_pos - global_position
 	var dis_to_tar = offset.length()
+	var dis_to_hand = global_position.distance_to(hand.global_position)
 
 	step_time += delta
 
-	if abs(offset.y) < 40:
-		if goal_pos.y < global_position.y:
-			step(Vector2(get_parent().global_position.x, global_position.y - len_total * 0.9))
+	if dis_to_hand < 40:
+		if is_front_leg:
+			step(Vector2(get_parent().to_global(Vector2(get_parent().position.x, get_parent().position.y - len_total * 0.9))))
 		else:
-			step(Vector2(get_parent().global_position.x, global_position.y + len_total * 0.9))
+			step(Vector2(get_parent().to_global(Vector2(get_parent().position.x, get_parent().position.y + len_total * 0.9))))
 
-	if dis_to_tar > len_total * 0.9:
-		if goal_pos.y < global_position.y:
-			step(Vector2(get_parent().global_position.x, global_position.y - 40))
+	if dis_to_hand > len_total * 0.9:
+		if is_front_leg:
+			step(Vector2(get_parent().to_global(Vector2(get_parent().position.x, get_parent().position.y - 40))))
 		else:
-			step(Vector2(get_parent().global_position.x, global_position.y + 40))
+			step(Vector2(get_parent().to_global(Vector2(get_parent().position.x, get_parent().position.y + 40))))
 
 	var target_pos = Vector2()
 	var t = step_time / step_rate

@@ -29,6 +29,7 @@ position = Vector2( 413, 240 )
 collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
+can_sleep = false
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
@@ -49,9 +50,11 @@ __meta__ = {
 }
 
 [node name="Leg 1" parent="Body" instance=ExtResource( 8 )]
+is_front_leg = true
 
 [node name="Leg 2" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( 18, 1 )
+is_front_leg = true
 
 [node name="Leg 3" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( 16, 16 )
@@ -63,10 +66,12 @@ flipped = true
 
 [node name="Leg 5" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -14, -12 )
+is_front_leg = true
 flipped = true
 
 [node name="Leg 6" parent="Body" instance=ExtResource( 8 )]
 position = Vector2( -20, 1 )
+is_front_leg = true
 flipped = true
 
 [node name="Leg 7" parent="Body" instance=ExtResource( 8 )]
