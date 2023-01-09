@@ -25,7 +25,7 @@ func spawn_web(position1, position2):
 	var middle = create_webs(start_anchor, end_anchor)
 	create_webs(start_anchor, caterpillar_anchor)
 	create_webs(end_anchor, caterpillar_anchor)
-	create_webs(middle, caterpillar_anchor)
+	#create_webs(middle, caterpillar_anchor)
 	
 	
 	#main_node.add_child(create_web_geometry())

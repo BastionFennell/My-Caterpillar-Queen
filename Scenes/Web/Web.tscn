@@ -45,5 +45,4 @@ position = Vector2( -50, 0 )
 position = Vector2( 50, 0 )
 
 [node name="Nav" type="NavigationPolygonInstance" parent="."]
-visible = false
 navpoly = SubResource( 2 )
