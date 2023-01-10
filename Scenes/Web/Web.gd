@@ -17,8 +17,8 @@ var region
 var linked
 var total_mass = self.mass
 
-onready var astar_id_a = "%s_astar_a" % name
-onready var astar_id_b = "%s_astar_b" % name
+var astar_id_a
+var astar_id_b
 
 func attach(node):
 	if(node.position.y > position.y):
@@ -127,4 +127,3 @@ func _process(delta):
 
 	astar.set_point_position(astar_id_a, $A.global_position)
 	astar.set_point_position(astar_id_b, $B.global_position)
-#	pass

@@ -51,3 +51,6 @@ func _integrate_forces(state):
 func _process(_delta):
 	if Input.is_action_just_pressed("click"):
 		target = get_global_mouse_position()
+
+	if Input.is_action_just_pressed("start_tower"):
+		get_node("/root/EventBus").tower_start()

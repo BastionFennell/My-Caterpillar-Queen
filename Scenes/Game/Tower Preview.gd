@@ -33,6 +33,12 @@ func _process(_delta):
 # place self at center of segment
 	if visible:
 		var closest_web = _get_closest_web()
+
+		if Input.is_action_just_pressed("cancel_tower"):
+			remove_child(tower)
+			tower = null
+			visible = false
+
 		if closest_web && !closest_web.has_node("Tower"):
 			var distance_from_player = global_position.distance_to(player.global_position)
 			global_position = closest_web.global_position
@@ -42,20 +48,12 @@ func _process(_delta):
 			else:
 				modulate = "64ffffff"
 
-			if ready_to_place && Input.is_action_just_pressed("place_tower") && distance_from_player < MAX_PLACEMENT_DISTANCE:
+			if Input.is_action_just_pressed("place_tower") && distance_from_player < MAX_PLACEMENT_DISTANCE:
 				var new_tower = tower.duplicate()
 
 				new_tower.active = true
 				new_tower.name = "Tower"
 				closest_web.add_tower(new_tower)
-
-			if ready_to_place && Input.is_action_just_pressed("cancel_tower"):
-				remove_child(tower)
-				tower = null
-				visible = false
-				ready_to_place = false
-			else:
-				ready_to_place = true
 		else:
 			global_position = get_global_mouse_position()
 			modulate = "64ff0000"
